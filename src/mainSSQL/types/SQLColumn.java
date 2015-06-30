@@ -1,12 +1,12 @@
 package mainSSQL.types;
 
-import java.util.Map;
+import java.util.Map.Entry;
 
 public class SQLColumn {
 	SQLTable table;
-	public Map.Entry<String, SQLType> info;
+	public Entry<String, SQLType> info;
 
-	public SQLColumn(Map.Entry<String, SQLType> info, SQLTable table) {
+	public SQLColumn(Entry<String, SQLType> info, SQLTable table) {
 		this.table = table;
 		this.info = info;
 	}

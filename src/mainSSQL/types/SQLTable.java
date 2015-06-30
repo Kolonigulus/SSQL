@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import mainSSQL.SSQLO;
@@ -20,6 +19,7 @@ public class SQLTable {
 	Statement stmt;
 	HashMap<String, SQLType> Spalten;
 	String[] SpaltenNamen;
+	SQLColumn[] Columns;
 
 	public SQLTable(SSQLO SQLer, HashMap<String, SQLType> Spalten, String name)
 			throws SQLException {
@@ -56,7 +56,13 @@ public class SQLTable {
 		this.SpaltenNamen = SpaltenNamentemp.toArray(new String[1]);
 	}
 
-	public void putData(String[] daten, String[] spalten) throws SQLException {
+	public void putData(String[] daten, SQLColumn[] columns)
+			throws SQLException {
+		ArrayList<String> l = new ArrayList<String>();
+		for (SQLColumn e : columns) {
+			l.add(e.getName());
+		}
+		String[] spalten = l.toArray(new String[0]);
 		String temp = "INSERT INTO " + this.name + " ("
 				+ Arrays.toString(spalten).replace("[", "").replace("]", "")
 				+ ") " + " VALUES ( "
@@ -72,7 +78,7 @@ public class SQLTable {
 	}
 
 	public SQLColumn getColumn(String name) {
-		Map.Entry<String, SQLType> entry = null;
+		Entry<String, SQLType> entry = null;
 		for (Entry<String, SQLType> c : this.Spalten.entrySet()) {
 			if (c.getKey().equals(name)) {
 				entry = c;
@@ -110,12 +116,12 @@ public class SQLTable {
 				"SELECT * FROM " + getName() + " WHERE " + column.getName()
 						+ "='" + value + "'");
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		while(set.next()){
+		while (set.next()) {
 			list.add(set.getInt("ID"));
-			
+
 		}
 		ArrayList<SQLRow> alsolist = new ArrayList<SQLRow>();
-		for(Integer e : list){
+		for (Integer e : list) {
 			alsolist.add(getRow(e.intValue()));
 		}
 		return (new RowContainer(alsolist.toArray(new SQLRow[0])));
