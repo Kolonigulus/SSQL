@@ -6,7 +6,8 @@
 /*  7:   */ import java.sql.Statement;
 /*  8:   */ import java.util.HashMap;
 
-/*  9:   */ import mainSSQL.types.SQLType;
+import mainSSQL.types.SQLTable;
+import mainSSQL.types.SQLType;
 /* 10:   */ 
 /* 11:   */ public class SSQLO
 /* 12:   */ {

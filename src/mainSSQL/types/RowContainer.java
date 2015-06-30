@@ -3,6 +3,7 @@ package mainSSQL.types;
 import java.util.ArrayList;
 
 
+@SuppressWarnings("serial")
 public class RowContainer extends ArrayList<SQLRow> {
 
 
@@ -12,5 +13,6 @@ public class RowContainer extends ArrayList<SQLRow> {
 			super.add(e);
 		}
 	}
+
 
 }

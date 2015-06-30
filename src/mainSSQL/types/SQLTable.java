@@ -1,6 +1,5 @@
-package mainSSQL;
+package mainSSQL.types;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,10 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import mainSSQL.types.RowContainer;
-import mainSSQL.types.SQLColumn;
-import mainSSQL.types.SQLRow;
-import mainSSQL.types.SQLType;
+import mainSSQL.SSQLO;
 
 public class SQLTable {
 

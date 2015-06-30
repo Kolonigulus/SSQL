@@ -1,7 +1,6 @@
 package mainSSQL.types;
 
 import java.util.Map;
-import mainSSQL.SQLTable;
 
 public class SQLColumn {
 	SQLTable table;

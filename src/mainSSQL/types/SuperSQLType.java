@@ -1,7 +1,6 @@
 /*  1:   */ package mainSSQL.types;
 /*  2:   */ 
-/*  3:   */ import mainSSQL.SQLTable;
-/*  4:   */ 
+/*  3:   */ /*  4:   */ 
 /*  5:   */ public abstract class SuperSQLType
 /*  6:   */ {
 /*  7:   */   SQLTable table;
