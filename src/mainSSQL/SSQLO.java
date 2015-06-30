@@ -1,13 +1,11 @@
 package mainSSQL;
 
 import java.sql.Connection;
-/*  5:   */
+
 import java.sql.DriverManager;
-/*  6:   */
+
 import java.sql.SQLException;
-/*  7:   */
-import java.sql.Statement;
-/*  8:   */
+
 import java.util.HashMap;
 
 import mainSSQL.types.SQLTable;
@@ -15,7 +13,6 @@ import mainSSQL.types.SQLType;
 
 public class SSQLO {
 	Connection con;
-	private Statement stmt;
 
 	public SSQLO(String url, String port, String db, String user, String passwd)
 			throws SQLException, ClassNotFoundException {
@@ -30,7 +27,7 @@ public class SSQLO {
 					+ port + "/" + db + "?" + "user=" + user + "&"
 					+ "password=" + passwd);
 			System.out.println("Verbindung wird aufgebaut");
-			this.stmt = this.con.createStatement();
+
 		} catch (SQLException e) {
 			throw e;
 		}

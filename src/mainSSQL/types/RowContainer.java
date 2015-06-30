@@ -1,5 +1,6 @@
 package mainSSQL.types;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -13,6 +14,14 @@ public class RowContainer extends ArrayList<SQLRow> {
 			super.add(e);
 		}
 	}
-
+	public RowContainer select(SQLColumn column, String value) throws SQLException{
+		ArrayList<SQLRow> newContainer = new ArrayList<SQLRow>();
+		for(SQLRow e : this){
+			if(e.getRowSet().getString(column.getName()).equals(value)){
+				newContainer.add(e);
+			}
+		}
+		return (new RowContainer(newContainer.toArray(new SQLRow[0])));
+	}
 
 }
