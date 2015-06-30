@@ -25,9 +25,3 @@
 /* 25:18 */     return this.table;
 /* 26:   */   }
 /* 27:   */ }
-
-
-/* Location:           E:\Leon\Libs\SSQL.jar
- * Qualified Name:     mainSSQL.types.SuperSQLType
- * JD-Core Version:    0.7.0.1
- */
