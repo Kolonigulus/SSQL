@@ -27,7 +27,7 @@ public class SQLTable {
 		this.Spalten = Spalten;
 		SQL = SQLer;
 		this.name = name;
-		this.con = this.SQL.con;
+		this.con = this.SQL.getConnection();
 		this.stmt = this.con.createStatement();
 		StringBuilder sb = new StringBuilder();
 		sb.append("CREATE TABLE IF NOT EXISTS " + name + "(");

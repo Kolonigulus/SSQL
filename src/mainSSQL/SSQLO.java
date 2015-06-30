@@ -59,6 +59,9 @@ import mainSSQL.types.SQLType;
 /* 58:95 */     SQLTable table = new SQLTable(this, Spalten, name);
 /* 59:96 */     return table;
 /* 60:   */   }
+			public Connection getConnection(){
+				return con;
+			}
 /* 61:   */ }
 
 
