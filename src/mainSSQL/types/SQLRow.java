@@ -3,7 +3,6 @@ package mainSSQL.types;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import mainSSQL.SQLTable;
 
@@ -43,14 +42,14 @@ public class SQLRow {
 		return this.ID;
 	}
 
-	@SuppressWarnings("unused")
-	private String StringDataHelp(ResultSet result, ArrayList<String> list)
-			throws SQLException {
-		StringBuilder returnString = new StringBuilder();
-		for (String c : list) {
-			returnString.append(result.getString(c + "/%/"));
-		}
-		returnString.delete(returnString.length() - 3, returnString.length());
-		return returnString.toString();
+	public ResultSet getRowSet() throws SQLException{
+		ResultSet set = table.getStatement().executeQuery("SELECT * FROM " + table.getName() + " WHERE ID = " + ID);
+		return set;
+	}
+
+	public String getValue(String columnLabel) throws SQLException {
+		ResultSet set = getRowSet();
+		set.next();
+		return set.getString(columnLabel);
 	}
 }
