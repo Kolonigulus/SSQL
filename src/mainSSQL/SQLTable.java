@@ -1,5 +1,6 @@
 package mainSSQL;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import mainSSQL.types.RowContainer;
 import mainSSQL.types.SQLColumn;
 import mainSSQL.types.SQLRow;
 import mainSSQL.types.SQLType;
@@ -104,5 +106,22 @@ public class SQLTable {
 		ResultSet result = getStatement().executeQuery(
 				"SELECT " + column + "FROM" + this.name + "WHERE id=" + id);
 		return result.getString(column);
+	}
+
+	public RowContainer getRowsByValue(SQLColumn column, String value)
+			throws SQLException {
+		ResultSet set = getStatement().executeQuery(
+				"SELECT * FROM " + getName() + " WHERE " + column.getName()
+						+ "='" + value + "'");
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		while(set.next()){
+			list.add(set.getInt("ID"));
+			
+		}
+		ArrayList<SQLRow> alsolist = new ArrayList<SQLRow>();
+		for(Integer e : list){
+			alsolist.add(getRow(e.intValue()));
+		}
+		return (new RowContainer(alsolist.toArray(new SQLRow[0])));
 	}
 }
