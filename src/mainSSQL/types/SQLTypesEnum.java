@@ -14,9 +14,3 @@
 /* 14:14 */     return names;
 /* 15:   */   }
 /* 16:   */ }
-
-
-/* Location:           E:\Leon\Libs\SSQL.jar
- * Qualified Name:     mainSSQL.types.SQLTypesEnum
- * JD-Core Version:    0.7.0.1
- */
