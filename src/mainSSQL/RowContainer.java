@@ -1,7 +1,10 @@
-package mainSSQL.types;
+package mainSSQL;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import mainSSQL.TContent.SQLColumn;
+import mainSSQL.TContent.SQLRow;
 
 
 @SuppressWarnings("serial")

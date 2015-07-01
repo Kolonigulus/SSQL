@@ -1,14 +1,10 @@
 package mainSSQL;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
-
 import java.util.HashMap;
 
-import mainSSQL.types.SQLTable;
 import mainSSQL.types.SQLType;
 
 public class SSQLO {

@@ -1,6 +1,9 @@
-package mainSSQL.types;
+package mainSSQL.TContent;
 
 import java.util.Map.Entry;
+
+import mainSSQL.SQLTable;
+import mainSSQL.types.SQLType;
 
 public class SQLColumn {
 	SQLTable table;

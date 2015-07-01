@@ -1,4 +1,4 @@
-package mainSSQL.types;
+package mainSSQL;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import mainSSQL.SSQLO;
+import mainSSQL.TContent.SQLColumn;
+import mainSSQL.TContent.SQLRow;
+import mainSSQL.types.SQLType;
 
 public class SQLTable {
 
