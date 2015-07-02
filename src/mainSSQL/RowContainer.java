@@ -23,6 +23,7 @@ public class RowContainer extends ArrayList<SQLRow> {
 			if(e.getRowSet().getString(column.getName()).equals(value)){
 				newContainer.add(e);
 			}
+			
 		}
 		return (new RowContainer(newContainer.toArray(new SQLRow[0])));
 	}
