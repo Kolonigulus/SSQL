@@ -52,4 +52,7 @@ public class SQLRow {
 		set.next();
 		return set.getString(columnLabel);
 	}
+	public String getValue(SQLColumn column) throws SQLException{
+		return getValue(column.getName());
+	}
 }
