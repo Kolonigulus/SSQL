@@ -13,7 +13,7 @@ public class SQLValue {
 	public Class<?> getType() throws SQLException {
 		return f.getSet().getObject(f.getColumn().getName()).getClass();
 	}
-	
+
 	public Integer getInteger() throws SQLException {
 		return f.getSet().getInt(f.getColumn().getName());
 	}
