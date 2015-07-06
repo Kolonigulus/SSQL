@@ -23,6 +23,15 @@ public class SQLTable {
 	String[] SpaltenNamen;
 	SQLColumn[] Columns;
 
+	/**
+	 * Sollte eigentlich nur von dem SSQLO Objekt aufgerufen werden, trotzdem
+	 * möglich
+	 * 
+	 * @param SQLer
+	 * @param Spalten
+	 * @param name
+	 * @throws SQLException
+	 */
 	public SQLTable(SSQLO SQLer, HashMap<String, SQLType> Spalten, String name)
 			throws SQLException {
 
@@ -58,6 +67,19 @@ public class SQLTable {
 		this.SpaltenNamen = SpaltenNamentemp.toArray(new String[1]);
 	}
 
+	/**
+	 * Mit dieser Methoden können Daten (nur in String-Form) in die Tabelle in
+	 * eine neue Spalte eingefügt werden
+	 * 
+	 * @param daten
+	 *            die Daten. Das die Daten müssen die gleiche Reihenfolge haben
+	 *            wie die dazugehörigen SQLColumns
+	 * @param columns
+	 *            Die Spalten in die "daten" eingeben werden soll. Wenn eine
+	 *            Spalte ausgelassen wird, wird der Wert "null" eingefügt,
+	 *            sofern kein anderer Standart Wert gesetzt wurde
+	 * @throws SQLException
+	 */
 	public void putData(String[] daten, SQLColumn[] columns)
 			throws SQLException {
 		ArrayList<String> l = new ArrayList<String>();
@@ -75,6 +97,11 @@ public class SQLTable {
 		this.stmt.executeUpdate(temp);
 	}
 
+	/**
+	 * @param ID
+	 * @return Ein SQLRow-Objekt das die Zeile mit der ID des int "ID"
+	 *         repräsentiert
+	 */
 	public SQLRow getRow(int ID) {
 		return new SQLRow(ID, this);
 	}
@@ -112,6 +139,13 @@ public class SQLTable {
 		return result.getString(column);
 	}
 
+	/**
+	 * @param column
+	 * @param value
+	 * @return Ein Row Container der alle SQLRows beinhaltet auf die der Wert
+	 *         "value" in der Spalte "column" zutrifft
+	 * @throws SQLException
+	 */
 	public RowContainer getRowsByValue(SQLColumn column, String value)
 			throws SQLException {
 		ResultSet set = getStatement().executeQuery(
