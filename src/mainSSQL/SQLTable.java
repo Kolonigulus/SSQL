@@ -77,7 +77,8 @@ public class SQLTable {
 	 * @param columns
 	 *            Die Spalten in die "daten" eingeben werden soll. Wenn eine
 	 *            Spalte ausgelassen wird, wird der Wert "null" eingefügt,
-	 *            sofern kein anderer Standart Wert gesetzt wurde
+	 *            sofern kein anderer Standart Wert gesetzt wurde. Als Vorlage
+	 *            kann {@linkplain SQLTable.getColumns} dienen
 	 * @throws SQLException
 	 */
 	public void putData(String[] daten, SQLColumn[] columns)
@@ -117,6 +118,12 @@ public class SQLTable {
 		return new SQLColumn(entry, this);
 	}
 
+	/**
+	 * löscht diese Tabelle aus der Datenbank. Diese Aktion kann nicht wieder
+	 * rückgängig gemacht werden!
+	 * 
+	 * @throws SQLException
+	 */
 	public void delTable() throws SQLException {
 		this.stmt.executeUpdate("DROP TABLE " + this.name);
 	}
@@ -125,6 +132,10 @@ public class SQLTable {
 		return this.con.createStatement();
 	}
 
+	/**
+	 * @return Die HashMap<String, SQLType> die bei
+	 *         {@linkplain SSQLO.CreateTable} verwendet wurde
+	 */
 	public HashMap<String, SQLType> getHeader() {
 		return this.Spalten;
 	}
@@ -161,5 +172,9 @@ public class SQLTable {
 			alsolist.add(getRow(e.intValue()));
 		}
 		return (new RowContainer(alsolist.toArray(new SQLRow[0])));
+	}
+
+	public SQLColumn[] getColumns() {
+		return Columns;
 	}
 }
