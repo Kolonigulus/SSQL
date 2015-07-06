@@ -25,5 +25,8 @@ public class SQLValue {
 	public Float getFloat() throws SQLException {
 		return f.getSet().getFloat(f.getColumn().getName());
 	}
+	public Object getRawObjekt() throws SQLException{
+		return f.getSet().getObject(f.getColumn().getName());
+	}
 	
 }

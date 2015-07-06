@@ -17,6 +17,12 @@ public class RowContainer extends ArrayList<SQLRow> {
 			super.add(e);
 		}
 	}
+	/**
+	 * @param column
+	 * @param value
+	 * @return Ähmlich wie {@linkplain mainSSQL.SQLTable.getRowsByValue}
+	 * @throws SQLException
+	 */
 	public RowContainer select(SQLColumn column, String value) throws SQLException{
 		ArrayList<SQLRow> newContainer = new ArrayList<SQLRow>();
 		for(SQLRow e : this){
