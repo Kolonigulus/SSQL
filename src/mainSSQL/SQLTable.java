@@ -13,6 +13,10 @@ import mainSSQL.TContent.SQLColumn;
 import mainSSQL.TContent.SQLRow;
 import mainSSQL.types.SQLType;
 
+/**
+ * @author Leonhard
+ * Diese Klasse repräsentiert eine Tabelle in einer MySQL-Datenbank
+ */
 public class SQLTable {
 
 	String name;

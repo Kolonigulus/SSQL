@@ -6,6 +6,10 @@ import java.sql.SQLException;
 
 import mainSSQL.SQLTable;
 
+/**
+ * @author Leonhard
+ * Repräsentiert eine Zeile in einer MySQL Tabelle
+ */ 
 public class SQLRow {
 	int ID;
 	SQLTable table;
@@ -15,6 +19,11 @@ public class SQLRow {
 		this.table = table;
 	}
 
+	/**
+	 * @return ein String, der alle Werte dieser SQLTabellen-Zeile mit einem
+	 *         Komma separiert beinhaltet
+	 * @throws SQLException
+	 */
 	public String DataToString() throws SQLException {
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT * FROM " + this.table.getName());
@@ -25,7 +34,7 @@ public class SQLRow {
 		if (result.next()) {
 			sb = new StringBuilder();
 			for (int i = 1; i <= meta.getColumnCount(); i++) {
-				sb.append(result.getString(i));
+				sb.append(result.getString(i) + " ");
 				System.out.println(result.getString(i));
 			}
 			System.out.println(sb.toString());
@@ -42,17 +51,23 @@ public class SQLRow {
 		return this.ID;
 	}
 
-	public ResultSet getRowSet() throws SQLException{
-		ResultSet set = table.getStatement().executeQuery("SELECT * FROM " + table.getName() + " WHERE ID = " + ID);
+	/**
+	 * @return ein Result Set das diese Zeile beinhaltet
+	 * @throws SQLException
+	 */
+	public ResultSet getRowSet() throws SQLException {
+		ResultSet set = table.getStatement().executeQuery(
+				"SELECT * FROM " + table.getName() + " WHERE ID = " + ID);
 		return set;
 	}
 
-	public String getValue(String columnLabel) throws SQLException {
+	private String getValue(String columnLabel) throws SQLException {
 		ResultSet set = getRowSet();
 		set.next();
 		return set.getString(columnLabel);
 	}
-	public String getValue(SQLColumn column) throws SQLException{
+
+	public String getValue(SQLColumn column) throws SQLException {
 		return getValue(column.getName());
 	}
 }

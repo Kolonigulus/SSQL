@@ -2,6 +2,10 @@ package mainSSQL.TContent.fields;
 
 import java.sql.SQLException;
 
+/**
+ * @author Leonhard Alle Getter dieser Methode funktionieren nur wenn in der
+ *         MySQL Tabelle der Wert auch von dem entsprechenden Typ ist.
+ */
 public class SQLValue {
 	private SQLField f;
 	private Object value;
