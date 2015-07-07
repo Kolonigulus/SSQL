@@ -1,7 +1,7 @@
 package mainSSQL.types;
 
 public enum SQLTypesEnum {
-	INT, STRING, TEXT, BOOLEAN, DATE, TINYTEXT;
+	INT, FLOAT, DOUBLE, TEXT, BOOLEAN, DATE, TINYTEXT;
 
 	public static String[] names() {
 		SQLTypesEnum[] states = values();
