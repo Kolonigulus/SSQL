@@ -5,6 +5,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import mainSSQL.SQLTable;
+import mainSSQL.TContent.fields.SQLField;
 
 /**
  * @author Leonhard
@@ -66,8 +67,20 @@ public class SQLRow {
 		set.next();
 		return set.getString(columnLabel);
 	}
-
+	@Deprecated
+	/**
+	 * Bitte getField(SQLColumn column).getValue() benutzen!
+	 * @param column
+	 * @return
+	 * @throws SQLException
+	 */
 	public String getValue(SQLColumn column) throws SQLException {
 		return getValue(column.getName());
+	}
+	public SQLField getField(SQLColumn column) throws SQLException{
+		return (new SQLField(this, column));
+	}
+	public void delete() throws SQLException{
+		table.getStatement().executeUpdate("DELETE FROM " + table.getName()  + " WHERE ID=" + ID);
 	}
 }
