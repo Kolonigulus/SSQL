@@ -181,4 +181,5 @@ public class SQLTable {
 	public SQLColumn[] getColumns() {
 		return Columns;
 	}
+	
 }
