@@ -1,7 +1,9 @@
 package mainSSQL.types;
 
 /**
- * @author Leonhard Diese Klasse repräsentiert einen SQLTyp
+ * Diese Klasse repräsentiert einen SQLTyp
+ * 
+ * @author Leonhard
  */
 public class SQLType {
 	SQLTypesEnum type;

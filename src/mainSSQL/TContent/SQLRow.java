@@ -8,7 +8,9 @@ import mainSSQL.SQLTable;
 import mainSSQL.TContent.fields.SQLField;
 
 /**
- * @author Leonhard Repräsentiert eine Zeile in einer MySQL Tabelle
+ * Repräsentiert eine Zeile in einer MySQL Tabelle
+ * 
+ * @author Leonhard
  */
 public class SQLRow {
 	int ID;

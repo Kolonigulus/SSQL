@@ -15,8 +15,9 @@ import mainSSQL.types.SQLType;
 import mainSSQL.types.SQLTypesEnum;
 
 /**
- * @author Leonhard Diese Klasse repräsentiert eine Tabelle in einer
- *         MySQL-Datenbank
+ * Diese Klasse repräsentiert eine Tabelle in einer MySQL-Datenbank
+ * 
+ * @author Leonhard
  */
 public class SQLTable {
 
@@ -95,7 +96,8 @@ public class SQLTable {
 	public void putData(String[] daten, SQLColumn[] columns)
 			throws SQLException {
 		for (int i = 0; i < columns.length; i++) {
-			if ((getHeader().get(columns[i].getName()).getType().equals(SQLTypesEnum.TEXT))
+			if ((getHeader().get(columns[i].getName()).getType()
+					.equals(SQLTypesEnum.TEXT))
 					|| (getHeader().get(columns[i].getName()).getType()
 							.equals(SQLTypesEnum.TINYTEXT))) {
 				daten[i] = "'" + daten[i] + "'";
