@@ -4,8 +4,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import mainSSQL.RowContainer;
 import mainSSQL.SQLTable;
 import mainSSQL.SSQLO;
+import mainSSQL.TContent.SQLRow;
+import mainSSQL.TContent.fields.SQLValue;
 import mainSSQL.types.SQLType;
 import mainSSQL.types.SQLTypesEnum;
 
@@ -27,20 +30,24 @@ public class SimpleAPIExample {
 					"xUOTZz1FNEaCO5hnZQml");
 			SQLTable table = SQL.CreateTable(types, "FUBAR");
 			Scanner sc = new Scanner(System.in);
-			while(!stopped){
-				System.out.println("1 = stoppen \n 2 = Eingabe tätigen \n 3 = Daten auslesen");
-				int i = sc.nextInt();
-				if(i == 1){
-					stopped = true;
-				}
-				else if(i == 2){
-					p("Bitte alle spalten mit einem Komma getrennt (ohne Leerezeichen) angeben");
-					String input = sc.nextLine();
-					String[] spalten
-				}
-				
+			String[] daten = new String[3];
+			daten[1] = sc.nextLine();
+			daten[2] = sc.nextLine();
+			daten[3] = sc.nextLine();
+			table.putData(daten, table.getColumns());
+			p("Bitte Kunde eingeben nach dem Gesucht werden soll:");
+			RowContainer c = table.getRowsByValue(table.getColumn("Kunde"), sc.nextLine());
+			for(SQLRow cr : c){
+				System.out.println(cr.DataToString());
 			}
-			
+			p("Bitte Kunden für den ein Update gemacht werden soll angeben:");
+			String temp = sc.nextLine();
+			p("Bitte neues Guthaben eingeben:");
+			c = table.getRowsByValue(table.getColumn("Kunde"), temp);
+			for(SQLRow cr : c){
+				cr.getField(table.getColumn("Kunde")).setValue((new SQLValue(sc.nextLine())));
+			}
+
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
