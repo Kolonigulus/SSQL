@@ -8,9 +8,8 @@ import mainSSQL.SQLTable;
 import mainSSQL.TContent.fields.SQLField;
 
 /**
- * @author Leonhard
- * Repräsentiert eine Zeile in einer MySQL Tabelle
- */ 
+ * @author Leonhard Repräsentiert eine Zeile in einer MySQL Tabelle
+ */
 public class SQLRow {
 	int ID;
 	SQLTable table;
@@ -36,9 +35,7 @@ public class SQLRow {
 			sb = new StringBuilder();
 			for (int i = 1; i <= meta.getColumnCount(); i++) {
 				sb.append(result.getString(i) + " ");
-				System.out.println(result.getString(i));
 			}
-			System.out.println(sb.toString());
 			return sb.toString();
 		}
 		return null;
@@ -67,6 +64,7 @@ public class SQLRow {
 		set.next();
 		return set.getString(columnLabel);
 	}
+
 	@Deprecated
 	/**
 	 * Bitte getField(SQLColumn column).getValue() benutzen!
@@ -77,10 +75,13 @@ public class SQLRow {
 	public String getValue(SQLColumn column) throws SQLException {
 		return getValue(column.getName());
 	}
-	public SQLField getField(SQLColumn column) throws SQLException{
+
+	public SQLField getField(SQLColumn column) throws SQLException {
 		return (new SQLField(this, column));
 	}
-	public void delete() throws SQLException{
-		table.getStatement().executeUpdate("DELETE FROM " + table.getName()  + " WHERE ID=" + ID);
+
+	public void delete() throws SQLException {
+		table.getStatement().executeUpdate(
+				"DELETE FROM " + table.getName() + " WHERE ID=" + ID);
 	}
 }
