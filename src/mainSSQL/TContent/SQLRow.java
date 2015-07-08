@@ -65,17 +65,6 @@ public class SQLRow {
 		return set.getString(columnLabel);
 	}
 
-	@Deprecated
-	/**
-	 * Bitte getField(SQLColumn column).getValue() benutzen!
-	 * @param column
-	 * @return
-	 * @throws SQLException
-	 */
-	public String getValue(SQLColumn column) throws SQLException {
-		return getValue(column.getName());
-	}
-
 	public SQLField getField(SQLColumn column) throws SQLException {
 		return (new SQLField(this, column));
 	}
